@@ -5,12 +5,14 @@ def menu():
         choix = input("""tu veux quoi ? :
 Pyramide normale --------------> (1)
 Pyramide inversée -------------> (2)
-Ou un carré -------------------> (3)
-Ou un carré avec un trou ------> (4)
-Ou un rectangle ---------------> (5)
-Ou un rectangle avec un trou --> (6)
-Ou un cercle ------------------> (7)
-Ou un cercle avec un trou -----> (8)
+Pyramide normale trou ---------> (3)
+Pyramide inversée trou --------> (4)
+Ou un carré -------------------> (5)
+Ou un carré avec un trou ------> (6)
+Ou un rectangle ---------------> (7)
+Ou un rectangle avec un trou --> (8)
+Ou un cercle ------------------> (9)
+Ou un cercle avec un trou -----> (10)
 Ou 'stop' pour fermer le programme? : """)
         if choix == "1":
             pyramide()
@@ -19,21 +21,27 @@ Ou 'stop' pour fermer le programme? : """)
             pyramide_inverser()
             break
         elif choix == "3":
-            carré()
+            pyramide_trou()
             break
         elif choix == "4":
-            carré_trou()
+            pyramide_inverser_trou()
             break
         elif choix == "5":
-            rectangle()
+            carré()
             break
         elif choix == "6":
-            rectangle_trou()
+            carré_trou()
             break
         elif choix == "7":
-            cercle()
+            rectangle()
             break
         elif choix == "8":
+            rectangle_trou()
+            break
+        elif choix == "9":
+            cercle()
+            break
+        elif choix == "10":
             cercle_trou()
             break
         elif choix == "stop":
@@ -50,6 +58,22 @@ def pyramide():
         espaces -= 1
         nbetoiles += 2
     menu()
+    
+def pyramide_trou():
+    nbLignes = int(input(f"tu veux combien de lignes ? : "))
+    nbetoiles = 1
+    nbespaces = 1
+    espaces = nbLignes+1
+    debut = int(espaces)+1
+    print(" " * debut, "*" * nbetoiles)
+    for i in range(int(nbLignes)-2):
+        print(" "*espaces,"*"+" "*nbespaces+"*")
+        espaces -= 1
+        nbespaces +=2
+        nbetoiles += 2
+    fin = int(nbetoiles)+2
+    print(" " * espaces,"*" * fin)
+    menu()
         
 def pyramide_inverser():
     nbLignes = int(input(f"tu veux combien de lignes ? : "))
@@ -59,6 +83,20 @@ def pyramide_inverser():
         print(" " * espaces, "*" * nbetoiles)
         espaces += 1
         nbetoiles -= 2
+    menu()
+    
+def pyramide_inverser_trou():
+    nbLignes = int(input(f"tu veux combien de lignes ? : "))
+    nbetoiles = nbLignes * 2 - 1
+    espaces = 1
+    nbespaces = nbetoiles - 4
+    print("*"*nbetoiles)
+    for i in range(int(nbLignes)-2):
+        print(" "*espaces+"*"+" "*nbespaces+"*")
+        espaces += 1
+        nbetoiles -= 2
+        nbespaces -= 2
+    print(" "*espaces+"*")
     menu()
         
 def carré():
