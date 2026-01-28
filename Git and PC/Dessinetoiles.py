@@ -1,8 +1,10 @@
 from math import*
+from PIL import Image
 
 def menu():
     while True :
-        choix = input("""tu veux quoi ? :
+        choix = input("""
+tu veux quoi ? :
 Pyramide normale --------------> (1)
 Pyramide inversée -------------> (2)
 Pyramide normale trou ---------> (3)
